@@ -5,7 +5,7 @@ include("conexao.php");
 $usuario = $_POST['usuario'];
 $senha = $_POST['senha'];
 
-$codigoSQL = "SELECT * FROM tblmedico WHERE usuario = :usuario";
+$codigoSQL = "SELECT * FROM tblmedicos WHERE usuario = :usuario";
 $comando = $conexao->prepare($codigoSQL);
 $comando->execute(array(':usuario' => $usuario));
 $medico = $comando->fetch(PDO::FETCH_ASSOC); // Busca os dados do médico

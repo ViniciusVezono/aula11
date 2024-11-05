@@ -10,7 +10,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $data_hora = date('Y-m-d H:i:s');
 }
 
-$codigoSQL = "INSERT INTO `tblmedico` (`nome`, `especialidade`, `crm`, `usuario`, `senha`, `data_criada`) VALUES (:nome, :espec, :crm , :usuario, :senha, :datah)";
+$codigoSQL = "INSERT INTO `tblmedicos` (`nome`, `especialidade`, `crm`, `usuario`, `senha`, `data_criada`) VALUES (:nome, :espec, :crm , :usuario, :senha, :datah)";
 
 try{
     $comando = $conexao->prepare($codigoSQL);
