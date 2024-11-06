@@ -70,22 +70,18 @@
         $nome_p = $_POST['nome_p'];
         $nome_medicamento = $_POST['nome_medicamento'];
         $dose = $_POST['dose'];
-        $data = date('Y-m-d');
-        $hora = date('H:i:s');
 
         $checkPacienteSQL = "SELECT * FROM `tblpaciente` WHERE `nome` = :nome_p";
         $comandoCheck = $conexao->prepare($checkPacienteSQL);
         $comandoCheck->execute(array(':nome_p' => $nome_p));
 
         if ($comandoCheck->rowCount() > 0) {
-            $codigoSQL = "INSERT INTO `receitas` (`nome_paciente`, `nome_medicamento`, `data_administracao`, `hora_administracao`, `dose`) VALUES (:nome_p, :nome_m, :data_adm, :hora_adm, :dose)";
+            $codigoSQL = "INSERT INTO `receitas` (`nome_paciente`, `nome_medicamento`, `dose`) VALUES (:nome_p, :nome_m, :dose)";
             try {
                 $comando = $conexao->prepare($codigoSQL);
                 $resultado = $comando->execute(array(
                     ':nome_p' => $nome_p,
                     ':nome_m' => $nome_medicamento,
-                    ':data_adm' => $data,
-                    ':hora_adm' => $hora,
                     ':dose' => $dose
                 ));
 
@@ -98,7 +94,6 @@
                 echo "Erro: " . $e->getMessage();
             }
         } else {
-            // Paciente não encontrado, solicitar cadastro
             echo "Paciente não cadastrado! Por favor, cadastre o paciente antes de registrar uma receita.<br>";
         }
     }
