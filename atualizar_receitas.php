@@ -50,8 +50,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $resultado = $comando->execute(array(
         ':nome_paciente' => $nome_paciente,
         ':nome_medicamento' => $nome_medicamento,
-        ':data_admnistracao' => $data_administracao,
-        ':hora_admnistracao' => $hora_administracao,
+        ':data_administracao' => $data_administracao,
+        ':hora_administracao' => $hora_administracao,
         ':dose' => $dose,
         ':id' => $receita_id
     ));
