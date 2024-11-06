@@ -26,16 +26,16 @@ if (isset($_GET['id'])) {
     exit();
 }
 
-// Verifica se o formulário foi enviado para atualizar os dados
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // Obtém os dados do formulário
+    
     $nome_paciente = $_POST['nome_paciente'];
     $nome_medicamento = $_POST['nome_medicamento'];
     $data_administracao = $_POST['data_administracao'];
     $hora_administracao = $_POST['hora_administracao'];
     $dose = $_POST['dose'];
 
-    // Atualiza os dados no banco de dados
+    
     $comandoSQL = "UPDATE receitas SET 
         nome_paciente = :nome_paciente,
         nome_medicamento = :nome_medicamento,
@@ -46,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     
     $comando = $conexao->prepare($comandoSQL);
 
-    // Executa o comando para atualizar os dados
+    
     $resultado = $comando->execute(array(
         ':nome_paciente' => $nome_paciente,
         ':nome_medicamento' => $nome_medicamento,
